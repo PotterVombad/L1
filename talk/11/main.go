@@ -1,0 +1,28 @@
+// Что выведет данная программа и почему?
+// 4
+// 0
+// 3
+// 2
+// 1
+// fatal error: all goroutines are asleep - deadlock!
+// потому что передали waitGroup по значению а не по ссылке
+
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+func main() {
+	wg := sync.WaitGroup{}
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go func(wg sync.WaitGroup, i int) {
+			fmt.Println(i)
+			wg.Done()
+		}(wg, i)
+	}
+	wg.Wait()
+	fmt.Println("exit")
+}
