@@ -26,5 +26,5 @@ func main() {
 	first := New(3, 2)
 	second := New(1, 2)
 
-	fmt.Printf("%v", first.Distance(second))
+	fmt.Println(first.Distance(second))
 }

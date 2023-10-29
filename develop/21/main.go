@@ -5,11 +5,11 @@ type Import interface {
 }
 
 type Your struct {
+	a string
 }
 
 func (y *Your) ConvertDogsToCatsLove() string {
-	var a string
-	return a
+	return y.a
 }
 
 type AdapterToCatLover struct {

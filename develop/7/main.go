@@ -20,7 +20,7 @@ func SyncMapAdd(data *sync.Map, i int, wg *sync.WaitGroup) {
 
 func main() {
 	n := 10
-	wg := sync.WaitGroup{}
+	var wg sync.WaitGroup
 	wg.Add(n)
 	mut := sync.Mutex{}
 	data := make(map[int]struct{})

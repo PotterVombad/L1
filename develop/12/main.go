@@ -7,11 +7,11 @@ type Set struct {
 }
 
 func MakeSet(s []string) Set {
-	dict := make(map[string]bool)
+	dict := make(map[string]struct{})
 	for _, v := range s {
 		_, ok := dict[v]
 		if !ok {
-			dict[v] = true
+			dict[v] = struct{}{}
 		}
 	}
 	keys := make([]string, 0, len(dict))

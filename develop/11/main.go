@@ -7,11 +7,11 @@ type Set[T comparable] struct {
 }
 
 func MakeSet[T comparable](s []T) Set[T] {
-	dict := make(map[T]bool)
+	dict := make(map[T]struct{})
 	for _, v := range s {
 		_, ok := dict[v]
 		if !ok {
-			dict[v] = true
+			dict[v] = struct{}{}
 		}
 	}
 	keys := make([]T, 0, len(dict))
@@ -24,10 +24,10 @@ func MakeSet[T comparable](s []T) Set[T] {
 }
 
 func (s Set[T]) Intersection(sec Set[T]) []T {
-	dict := make(map[T]bool)
+	dict := make(map[T]struct{})
 	res := make([]T, 0, len(s.el))
 	for _, v := range s.el {
-		dict[v] = true
+		dict[v] = struct{}{}
 	}
 	for _, w := range sec.el {
 		_, ok := dict[w]
